@@ -1,8 +1,25 @@
 const addMovieItem = document.getElementById("add-modal"); 
 const startAddMovieBtn = document.querySelector("header button");
+const backDrop = document.getElementById("backdrop");
+const cancel = document.querySelector(".btn--passive"); 
 
-const showForm = () => {
-    addMovieItem.classList.toggle("visible"); 
+const backdropGetsGray = () => {
+    backDrop.classList.toggle("visible"); 
 }
 
-startAddMovieBtn.addEventListener("click", showForm)
+const showForm = () => {
+    addMovieItem.classList.toggle("visible");
+    backdropGetsGray(); 
+}
+
+const backDropClickHandler = () => {
+    showForm()
+}
+
+const cancelAddMovie = () => {
+    showForm()
+}
+
+startAddMovieBtn.addEventListener("click", showForm); 
+backDrop.addEventListener("click", showForm);
+cancel.addEventListener("click", cancelAddMovie);
