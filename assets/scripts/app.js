@@ -5,6 +5,8 @@ const cancel = document.querySelector(".btn--passive");
 const add = cancel.nextElementSibling; 
 const userInputs = newForm.querySelectorAll("input"); //select all input 
 
+const movies = [];
+
 const backdropGetsGray = () => {
     backDrop.classList.toggle("visible"); 
 }
@@ -37,6 +39,17 @@ const addMovieHandler = () => {//map through inputs and isolate the values
         alert("UH-OH! Something went wrong! Please make sure you enter valid values!!");
         return; 
     }
+    
+    const newMovie = {
+        title: titleValue,
+        image: imageUrlValue,
+        rating: ratingValue
+    } 
+
+    movies.push(newMovie);
+    console.log(movies);
+    showForm();//close window
+
 }
 
 startAddMovieBtn.addEventListener("click", showForm); 
