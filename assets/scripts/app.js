@@ -16,6 +16,22 @@ const updateUI = () => {
     }
 };
 
+const renderMovieItem = (title, imageUrl, rating) => {
+    const newMovieItem = document.createElement("li");
+    newMovieItem.className = "movie-element";
+    newMovieItem.innerHTML = `
+    <div class="movie-element__image">
+        <img src="${imageUrl}" alt="${title}">
+    </div>
+    <div class="movie-element__info">
+        <h2>${title}</h2>
+        <p>${rating}/10 stars ⭐</p>
+    </div>
+    `;
+    const listRoot = document.getElementById("movie-list");
+    listRoot.appendChild(newMovieItem); 
+}
+
 const backdropGetsGray = () => {
     backDrop.classList.toggle("visible"); 
 }
@@ -37,8 +53,7 @@ const clearInputs = () => {
 
 const cancelAddMovieHandler = () => {
     showForm();
-    clearInputs();
-    
+    clearInputs()
 }
 
 const addMovieHandler = () => {//map through inputs and isolate the values
@@ -51,7 +66,7 @@ const addMovieHandler = () => {//map through inputs and isolate the values
         imageUrlValue.trim() === "" ||
         ratingValue.trim() === "" ||
         +ratingValue < 1 ||
-        +ratingValue > 5
+        +ratingValue > 10
     ) {
         alert("UH-OH! Something went wrong! Please make sure you enter valid values!!");
         return; 
@@ -67,6 +82,7 @@ const addMovieHandler = () => {//map through inputs and isolate the values
     console.log(movies);
     showForm();//close window
     clearInputs();
+    renderMovieItem(newMovie.title, newMovie.image, newMovie.rating)
     updateUI(); 
 }
 
