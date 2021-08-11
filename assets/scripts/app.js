@@ -20,8 +20,15 @@ const backDropClickHandler = () => {
     showForm()
 }
 
+const clearInputs = () => {
+    userInputs[0].value = ""; 
+    userInputs[1].value = "";
+    userInputs[2].value = ""; 
+}
+
 const cancelAddMovieHandler = () => {
-    showForm()
+    showForm();
+    clearInputs();
 }
 
 const addMovieHandler = () => {//map through inputs and isolate the values
@@ -49,6 +56,7 @@ const addMovieHandler = () => {//map through inputs and isolate the values
     movies.push(newMovie);
     console.log(movies);
     showForm();//close window
+    clearInputs();
 
 }
 
