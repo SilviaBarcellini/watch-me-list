@@ -4,8 +4,17 @@ const backDrop = document.getElementById("backdrop");
 const cancel = document.querySelector(".btn--passive"); 
 const add = cancel.nextElementSibling; 
 const userInputs = newForm.querySelectorAll("input"); //select all input 
+const welcomeMessageBox = document.getElementById("entry-text");
 
 const movies = [];
+
+const updateUI = () => {
+    if (movies.length === 0) {
+        welcomeMessageBox.style.display = "box";
+    } else {
+        welcomeMessageBox.style.display = "none";
+    }
+};
 
 const backdropGetsGray = () => {
     backDrop.classList.toggle("visible"); 
@@ -29,6 +38,7 @@ const clearInputs = () => {
 const cancelAddMovieHandler = () => {
     showForm();
     clearInputs();
+    
 }
 
 const addMovieHandler = () => {//map through inputs and isolate the values
@@ -57,7 +67,7 @@ const addMovieHandler = () => {//map through inputs and isolate the values
     console.log(movies);
     showForm();//close window
     clearInputs();
-
+    updateUI(); 
 }
 
 startAddMovieBtn.addEventListener("click", showForm); 
